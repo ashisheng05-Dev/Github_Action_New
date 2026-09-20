@@ -1,0 +1,32 @@
+name: Build and Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Display files
+        run: ls -la
+
+      - name: Build
+        run: |
+          echo "Starting build..."
+          mkdir -p build
+          echo "Build completed" > build/result.txt
+
+      - name: Test
+        run: |
+          echo "Running tests..."
+          cat build/result.txt
+          echo "Test passed!"
+
+      - name: Finish
+        run: echo "Pipeline completed successfully."
