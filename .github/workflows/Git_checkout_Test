@@ -1,0 +1,21 @@
+name: This is important because most real pipelines need to access your repository
+
+on: [push]
+  workflow_dispatch
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+      - uses: action/checkout@v4
+
+      - name: List Files
+      - run: ls -la
+
+      - name: Show current Directory
+      - run: pwd
+
+      - name: show git status
+      - run: git status
