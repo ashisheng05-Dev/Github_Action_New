@@ -5,13 +5,16 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    stepes:
+    steps:
       - name: Checkout code
-        uses: npm test
+        uses: actions/checkout@v4
 
-      - name: Notify Slack on Failue
+      - name: Run Test
+        run: npm test
+
+      - name: Notify Slack on Failure
         if: failure()
         uses:  rtCamp/action-slack-notify@v2
         with:
-          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          env: SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           message: "Build Failed! Check the logs."
