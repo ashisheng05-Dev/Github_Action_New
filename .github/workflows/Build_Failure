@@ -1,0 +1,17 @@
+name: Notify on Build Failure
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    stepes:
+      - name: Checkout code
+        uses: npm test
+
+      - name: Notify Slack on Failue
+        if: failure()
+        uses:  rtCamp/action-slack-notify@v2
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          message: "Build Failed! Check the logs."
