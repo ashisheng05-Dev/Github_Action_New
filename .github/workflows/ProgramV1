@@ -1,4 +1,4 @@
-name: Build and Test program
+name: Build and Test program_new
 
 on:
   push:
