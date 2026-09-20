@@ -1,21 +1,22 @@
-name: This is important
+name: Git Checkout Test
 
-on: [push]
-  workflow_dispatch
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   checkout:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout repository
-      - uses: action/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: List Files
-      - run: ls -la
+      - name: List files
+        run: ls -la
 
-      - name: Show current Directory
-      - run: pwd
+      - name: Show current directory
+        run: pwd
 
-      - name: show git status
-      - run: git status
+      - name: Show Git status
+        run: git status
