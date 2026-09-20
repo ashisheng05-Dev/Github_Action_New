@@ -1,4 +1,4 @@
-name: This is important because most real pipelines need to access your repository
+name: This is important
 
 on: [push]
   workflow_dispatch
